@@ -1,0 +1,39 @@
+body {
+    margin-top: 100px;
+    padding: auto;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+}
+
+.One {
+    margin: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+}
+
+.Two {
+    margin: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center
+}
+
+.Three {
+    margin: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+}
+
+.Four {
+    margin: 20px;
+    display: flex;
+    flex-flow: column wrap;
+}
