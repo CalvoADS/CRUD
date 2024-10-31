@@ -1,0 +1,13 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = htmlspecialchars($_POST['nome']);
+    $cpf = htmlspecialchars($_POST['cpf']);
+    $idade = htmlspecialchars($_POST['idade']);
+    
+
+
+    echo "<p>nome: $nome</p>";
+    echo "<p>cpf: $cpf</p>";
+    echo "<p>idade: $idade</p>";
+    
+}
