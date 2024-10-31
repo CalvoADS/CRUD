@@ -1,13 +1,19 @@
-<?php
+<?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = htmlspecialchars($_POST['nome']);
     $cpf = htmlspecialchars($_POST['cpf']);
     $idade = htmlspecialchars($_POST['idade']);
-    
-
+    $sexo = htmlspecialchars($_POST['sexo']);
+    $datan = htmlspecialchars($_POST['datan']);
+    $datao = htmlspecialchars($_POST['datao']);
+    $tel = htmlspecialchars($_POST['tel']);
 
     echo "<p>nome: $nome</p>";
     echo "<p>cpf: $cpf</p>";
     echo "<p>idade: $idade</p>";
-    
+    echo "<p>sexo: $sexo</p>";
+    echo "<p>datan: $datan</p>";
+    echo "<p>datao: $datao</p>";
+    echo "<p>tel: $tel</p>";
 }
+?>
