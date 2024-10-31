@@ -10,35 +10,34 @@
 
 <body>
     <h1>Cadastro</h1>
-    <form action="">
+    <form action="crud.php" method="post">
         <div class="One">
 
-            <label for="Nome">Nome</label>
-            <input type="text">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome">
     
-            <label for="CPF">CPF</label>
-            <input type="number">
+            <label for="cpf">CPF</label>
+            <input type="number" name="cpf">
     
-            <label for="Telefone">Telefone</label>
-            <input type="tel">
-    
-            <label for="email">Email</label>
-            <input type="email">
+            <label for="idade">Idade</label>
+            <input type="number" name="idade">
+            
+            
         </div>
         <div class="Two">
-
-            <label for="Sexo">Sexo:</label>
-            <input type="checkbox" name="" id="">Masculino
-            <input type="checkbox">Feminino
+            
+            <label for="sexo">Sexo:</label>
+            <input type="checkbox" name="sexo">Masculino
+            <input type="checkbox" name="sexo">Feminino
         </div>
         <div class="Three">
-
-            <label for="Idade">Idade</label>
-            <input type="number">
-            <label for="Data">Data marcada</label>
-            <input type="date">
-            <label for="Hora">Hora marcada</label>
-            <input type="time">
+            
+            <label for="datan">Data de nascimento</label>
+            <input type="date" name="datan">
+            <label for="datao">Data do óbito</label>
+            <input type="date" name="datao">
+            <label for="tel">Telefone</label>
+            <input type="tel" name="tel">
         </div>
         <div class="Four">
 
