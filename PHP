@@ -1,4 +1,4 @@
-<?php 
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = htmlspecialchars($_POST['nome']);
     $cpf = htmlspecialchars($_POST['cpf']);
@@ -16,4 +16,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<p>datao: $datao</p>";
     echo "<p>tel: $tel</p>";
 }
-?>
