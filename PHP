@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "meu_formulario";
+$dbname = "crud";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -11,7 +11,6 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
     $nome = htmlspecialchars($_POST['nome']);
     $cpf = htmlspecialchars($_POST['cpf']);
     $idade = htmlspecialchars($_POST['idade']);
@@ -19,21 +18,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $datan = htmlspecialchars($_POST['datan']);
     $datao = htmlspecialchars($_POST['datao']);
     $tel = htmlspecialchars($_POST['tel']);
-    $relatório = htmlspecialchars($_POST['relatório']);
-    $enviar = htmlspecialchars($_POST['enviar']);
+    $relatório = isset($_POST['relatório']) ? htmlspecialchars($_POST['relatório']) : '';
+    $enviar = isset($_POST['enviar']) ? htmlspecialchars($_POST['enviar']) : '';
 
-    $sql = "INSERT INTO usuarios (nome, cpf, idade, sexo, datan, datao, tel, relatório) VALUES (?, ?)";
+    $sql = "INSERT INTO usuarios (nome, cpf, idade, sexo, datan, datao, tel, relatório) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $nome, $cpf, $idade, $sexo, $datan, $datao, $tel, $relatório);
-    
+    $stmt->bind_param("ssisssss", $nome, $cpf, $idade, $sexo, $datan, $datao, $tel, $relatório);
+
     if ($stmt->execute()) {
         echo "Dados inseridos com sucesso!";
     } else {
         echo "Erro: " . $stmt->error;
     }
     $stmt->close();
-
 }
 
 $conn->close();
