@@ -33,6 +33,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 }
-
-$conn->close();
+$sql = "SELECT * FROM usuarios";
+$result = $conn->query($sql);
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuários</title>
+</head>
+<body>
+
+<h2>Usuários</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Idade</th>
+        <th>Sexo</th>
+        <th>Data de Nascimento</th>
+        <th>Data de Outro</th>
+        <th>Telefone</th>
+        <th>Relatório</th>
+        <th>Ações</th>
+    </tr>
+    <?php
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>
+                <td>{$row['id']}</td>
+                <td>{$row['nome']}</td>
+                <td>{$row['cpf']}</td>
+                <td>{$row['idade']}</td>
+                <td>{$row['sexo']}</td>
+                <td>{$row['datan']}</td>
+                <td>{$row['datao']}</td>
+                <td>{$row['tel']}</td>
+                <td>{$row['relatório']}</td>
+                <td>
+                    <a href='editar.php?id={$row['id']}'>Editar</a> |
+                    <a href='deletar.php?id={$row['id']}' onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>
+                </td>
+            </tr>";
+        }
+    } else {
+        echo "<tr><td colspan='10'>Nenhum usuário encontrado</td></tr>";
+    }
+    ?>
+</table>
+</body>
+</html>
+
+    
+
