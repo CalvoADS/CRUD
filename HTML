@@ -5,22 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="crud.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>CRUD</title>
 </head>
 
 <body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb ">
+            <li class="breadcrumb-item active btn btn-secondary"> <a href="crud.php" >Bando de dados</a></li>
+        </ol>
+    </nav>
     <h1>Cadastro</h1>
     <form action="crud.php" method="post">
         <div class="One">
 
             <label for="nome">Nome</label>
-            <input type="text" name="nome">
+            <input type="text" name="nome" class="p-0 mb-0 bg-secondary text-white">
 
             <label for="cpf">CPF</label>
-            <input type="number" name="cpf">
+            <input type="number" name="cpf" class="p-0 mb-0 bg-secondary text-white">
 
             <label for="idade">Idade</label>
-            <input type="number" name="idade">
+            <input type="number" name="idade" class="p-0 mb-0 bg-secondary text-white">
 
 
         </div>
@@ -35,23 +42,26 @@
         <div class="Three">
 
             <label for="datan">Data de nascimento</label>
-            <input type="date" name="datan">
+            <input type="date" name="datan" class="p-0 mb-0 bg-secondary text-white">
             <label for="datao">Data do óbito</label>
-            <input type="date" name="datao">
+            <input type="date" name="datao" class="p-0 mb-0 bg-secondary text-white">
             <label for="tel">Telefone</label>
-            <input type="tel" name="tel">
+            <input type="tel" name="tel" class="p-0 mb-0 bg-secondary text-white">
         </div>
         <div class="Four">
 
             <label for="relatório">Relatório</label>
             <textarea name="relatório" id="relatório"></textarea>
-            <label for="enviar">Enviar</label>
-            <input type="submit" name="enviar">
+            <label for="enviar"></label>
+            <input type="submit" name="enviar" class="btn btn-secondary btn-lg btn-block">
         </div>
 
-        
+
     </form>
-    <p><a href="crud.php">Ver Banco de dados</a></p>
+    <picture>
+        <source media="">
+        <img src="tumulo.png" class="rounded mx-auto d-block" alt="...">
+    </picture>
 </body>
 
 </html>
