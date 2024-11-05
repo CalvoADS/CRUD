@@ -81,8 +81,10 @@ $result = $conn->query($sql);
     } else {
         echo "<tr><td colspan='10'>Nenhum usuário encontrado</td></tr>";
     }
+    
     ?>
 </table>
+<p><a href="crud.html">Voltar ao Formulário</a></p>
 </body>
 </html>
 
