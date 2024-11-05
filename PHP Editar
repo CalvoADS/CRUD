@@ -69,7 +69,7 @@ $conn->close();
 
 <h2>Editar Usuário</h2>
 <form method="post" action="">
-    <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+    <input type="hidden" name="id" value="<?php echo $user['id']; ?>" >
     Nome: <input type="text" name="nome" value="<?php echo $user['nome']; ?>"><br>
     CPF: <input type="text" name="cpf" value="<?php echo $user['cpf']; ?>"><br>
     Idade: <input type="number" name="idade" value="<?php echo $user['idade']; ?>"><br>
