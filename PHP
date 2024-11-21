@@ -33,6 +33,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 }
-
-$conn->close();
+$sql = "SELECT * FROM usuarios";
+$result = $conn->query($sql);
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="crud.css">
+    <title>Lista de Usuários</title>
+</head>
+<body>
+
+<h2>Usuários</h2>
+<table border="1" style="  border-collapse: collapse; border-radius: 8px; box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1); overflow: hidden;">
+
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Idade</th>
+        <th>Sexo</th>
+        <th>Data de Nascimento</th>
+        <th>Data de Outro</th>
+        <th>Telefone</th>
+        <th>Relatório</th>
+        <th>Ações</th>
+    </tr>
+    <?php
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>
+                <td>{$row['id']}</td>
+                <td>{$row['nome']}</td>
+                <td>{$row['cpf']}</td>
+                <td>{$row['idade']}</td>
+                <td>{$row['sexo']}</td>
+                <td>{$row['datan']}</td>
+                <td>{$row['datao']}</td>
+                <td>{$row['tel']}</td>
+                <td>{$row['relatório']}</td>
+                <td>
+                    <a href='editar.php?id={$row['id']}' style='color: white; background-color: green; padding: 5px 30px; margin: -2px; text-decoration: none; border-radius: 4px; margin-right: -5px;'>Editar</a>
+                    <a href='deletar.php?id={$row['id']}' style='color: white; background-color: red; padding: 5px 30px; margin: -2px -5px; text-decoration: none; border-radius: 4px;' onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>
+                </td>
+            </tr>";
+        }
+    } else {
+        echo "<tr><td colspan='10'>Nenhum usuário encontrado</td></tr>";
+    }
+    
+    ?>
+</table>
+<p><a href="crud.html">Voltar ao Formulário</a></p>
+</body>
+</html>
+
+    

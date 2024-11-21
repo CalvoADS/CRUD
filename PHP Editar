@@ -1,0 +1,85 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "crud";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    
+    // Busca o usuário pelo ID
+    $sql = "SELECT * FROM usuarios WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+    } else {
+        echo "Usuário não encontrado!";
+        exit();
+    }
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = intval($_POST['id']);
+    $nome = htmlspecialchars($_POST['nome']);
+    $cpf = htmlspecialchars($_POST['cpf']);
+    $idade = htmlspecialchars($_POST['idade']);
+    $sexo = htmlspecialchars($_POST['sexo']);
+    $datan = htmlspecialchars($_POST['datan']);
+    $datao = htmlspecialchars($_POST['datao']);
+    $tel = htmlspecialchars($_POST['tel']);
+    $relatório = htmlspecialchars($_POST['relatório']);
+
+    $sql = "UPDATE usuarios SET nome = ?, cpf = ?, idade = ?, sexo = ?, datan = ?, datao = ?, tel = ?, relatório = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssisssssi", $nome, $cpf, $idade, $sexo, $datan, $datao, $tel, $relatório, $id);
+
+    if ($stmt->execute()) {
+        echo "Dados atualizados com sucesso!";
+        
+        header("Location: crud.php");
+        exit();
+    } else {
+        echo "Erro ao atualizar: " . $stmt->error;
+    }
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuário</title>
+</head>
+<body>
+
+<h2>Editar Usuário</h2>
+<form method="post" action="">
+    <input type="hidden" name="id" value="<?php echo $user['id']; ?>" >
+    Nome: <input type="text" name="nome" value="<?php echo $user['nome']; ?>"><br>
+    CPF: <input type="text" name="cpf" value="<?php echo $user['cpf']; ?>"><br>
+    Idade: <input type="number" name="idade" value="<?php echo $user['idade']; ?>"><br>
+    Sexo: <input type="text" name="sexo" value="<?php echo $user['sexo']; ?>"><br>
+    Data de Nascimento: <input type="date" name="datan" value="<?php echo $user['datan']; ?>"><br>
+    Data Outro: <input type="date" name="datao" value="<?php echo $user['datao']; ?>"><br>
+    Telefone: <input type="text" name="tel" value="<?php echo $user['tel']; ?>"><br>
+    Relatório: <input type="text" name="relatório" value="<?php echo $user['relatório']; ?>"><br>
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+</body>
+</html>
